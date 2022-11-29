@@ -99,7 +99,7 @@ Route::post('jobs/{job}', function ($job) {
         $application->name = $data['name'];
         $application->email = $data['email'];
         $application->phone = $data['phone'];
-        $application->resume = request()->file('resume')->storePublicly('public/resumes');
+        $application->resume = str_replace('public/', '', request()->file('resume')->storePublicly('public/resumes'));
         $application->job_id = $job->id;
         $application->save();
         session()->flash('message', 'Your application has been successfully accepted.');
