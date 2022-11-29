@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Storage;
 
@@ -25,6 +26,12 @@ Route::get('/contracts/{contract}', function ($contract) {
     return view('contracts')->with('contract', $contract);
 })->name('contract');
 
+Route::get('jobs/{job}', function ($job) {
+    $job = app('App\Job')->findOrFail($job);
+    return view('apply-job', ['job' => $job]);
+})->name('job');
+
+
 Route::view('contact', 'contact')->name('contact');
 
 Route::post('contact', function () {
@@ -33,12 +40,11 @@ Route::post('contact', function () {
         'response' => request('g-recaptcha-response'),
     ]);
     if ($captcha->successful()) {
-        if ($captcha->json('success') && $captcha->json('score') > 0.0) {
+        if ($captcha->json('success') && $captcha->json('score') > 0.4) {
             $data = request()->only(['name', 'email', 'subject', 'message']);
             app('App\Message')->create($data);
             return response()->json([], 200);
         }
-        return response()->json([], 403);
     }
     return response()->json([], 403);
 })->name('contact.submit');
@@ -65,4 +71,41 @@ Route::get('services', function () {
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+});
+
+Route::post('jobs/{job}', function ($job) {
+    $job = app('App\Job')->findOrFail($job);
+    if (now()->gte($job->deadline)) {
+        abort(404);
+    }
+
+    $data = request()->validate([
+        'name' => 'required',
+        'email' => 'required|email',
+        'phone' => 'required',
+        'resume' => 'required|file|mimetypes:application/pdf',
+        'g-recaptcha-response' => 'required'
+    ]);
+
+    $job_app = app('App\Models\JobApplicant')->where('email', request('email'))->where('job_id', $job->id)->first();
+
+    if (!blank($job_app)) {
+        session()->flash('message', 'Your email address is already used to submit this application.');
+        return back();
+    }
+
+    try {
+        $application = app('App\Models\JobApplicant');
+        $application->name = $data['name'];
+        $application->email = $data['email'];
+        $application->phone = $data['phone'];
+        $application->resume = request()->file('resume')->storePublicly('resumes');
+        $application->job_id = $job->id;
+        $application->save();
+        session()->flash('message', 'Your application has been successfully accepted.');
+    } catch (\Throwable $th) {
+        Log::error($th->getMessage());
+        session()->flash('message', 'Something went wrong.Please try again.');
+    }
+    return back();
 });

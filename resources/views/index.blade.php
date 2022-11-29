@@ -5,8 +5,13 @@
     Hero Section
   ============================-->
 <section id="hero">
-    <video id="background-video" autoplay loop muted preload="none">
-        <source src="{{asset('img/hero-bg-video.mp4')}}" type="video/mp4">
+    <video id="background-video"
+           autoplay
+           loop
+           muted
+           preload="none">
+        <source src="{{asset('img/hero-bg-video.mp4')}}"
+                type="video/mp4">
     </video>
     <div class="hero-container">
         <h1>{{setting('home.headline')}} <span class="primary-text">{{ setting('home.subtext')}}</span></h1>
@@ -46,10 +51,11 @@
             <div class="row">
                 @php $services = app('App\Service')->all() @endphp
                 @foreach($services as $service)
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.2s">
+                <div class="col-lg-4 col-md-6 wow fadeInUp"
+                     data-wow-delay="0.2s">
                     <div class="box">
-                        <div class="icon"><a href=""><i class="{{$service->icon}}"></i></a></div>
-                        <h4 class="title"><a href="">{{ $service->title }}</a></h4>
+                        <div class="icon"><a href="javascript:void(0);"><i class="{{$service->icon}}"></i></a></div>
+                        <h4 class="title"><a href="javascript:void(0);">{{ $service->title }}</a></h4>
                         <p class="description">{{ $service->description }}</p>
                     </div>
                 </div>
@@ -60,7 +66,8 @@
     <!--==========================
     Call To Action Section
     ============================-->
-    <section id="call-to-action" style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+    <section id="call-to-action"
+             style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url({{asset('img/career.jpg')}}) fixed center center;">
         <div class="container wow fadeIn">
             <div class="row">
@@ -97,7 +104,9 @@
             <div class="row ">
                 @foreach($contracts as $contract)
                 <div class="col-lg-4 col-md-6 p-4 d-flex align-items-center justify-content-center">
-                    <img src="{{ app('filesystem')->url($contract->image) }}" class="certificates_img" alt="">
+                    <img src="{{ app('filesystem')->url($contract->image) }}"
+                         class="certificates_img"
+                         alt="">
                 </div>
                 @endforeach
             </div>
@@ -117,8 +126,12 @@
         </div>
 
         <!-- Uncomment below if you wan to use dynamic maps -->
-        <iframe src="{{setting('site.gmaps_url')}}" width="100%" height="380" frameborder="0" style="border:0"
-            allowfullscreen></iframe>
+        <iframe src="{{setting('site.gmaps_url')}}"
+                width="100%"
+                height="380"
+                frameborder="0"
+                style="border:0"
+                allowfullscreen></iframe>
 
         <div class="container wow fadeInUp mt-5">
             <div class="row justify-content-center">
@@ -139,20 +152,24 @@
                     </div>
                     <div class="social-links">
                         @if(setting('site.twitter'))
-                        <a href="//{{setting('site.twitter')}}" target="_blank" class="twitter"><i
-                                class="fa fa-twitter"></i></a>
+                        <a href="//{{setting('site.twitter')}}"
+                           target="_blank"
+                           class="twitter"><i class="fa fa-twitter"></i></a>
                         @endif
                         @if(setting('site.facebook'))
-                        <a href="//{{setting('site.facebook')}}" target="_blank" class="facebook"><i
-                                class="fa fa-facebook"></i></a>
+                        <a href="//{{setting('site.facebook')}}"
+                           target="_blank"
+                           class="facebook"><i class="fa fa-facebook"></i></a>
                         @endif
                         @if(setting('site.instagram'))
-                        <a href="//{{setting('site.instagram')}}" target="_blank" class="instagram"><i
-                                class="fa fa-instagram"></i></a>
+                        <a href="//{{setting('site.instagram')}}"
+                           target="_blank"
+                           class="instagram"><i class="fa fa-instagram"></i></a>
                         @endif
                         @if(setting('site.linkedin'))
-                        <a href="//{{setting('site.linkedin')}}" target="_blank" class="linkedin"><i
-                                class="fa fa-linkedin"></i></a>
+                        <a href="//{{setting('site.linkedin')}}"
+                           target="_blank"
+                           class="linkedin"><i class="fa fa-linkedin"></i></a>
                         @endif
                     </div>
 

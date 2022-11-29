@@ -9,7 +9,7 @@
 
     <div class="container">
         <div class="copyright">
-            &copy; Copyright <strong>Agile1Tech.com</strong>.&nbsp; All Rights Reserved
+            &copy; Copyright &nbsp;<strong>Agile1Tech.com</strong>.&nbsp; All Rights Reserved
         </div>
     </div>
 </footer><!-- #footer -->
