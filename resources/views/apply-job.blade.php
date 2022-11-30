@@ -26,7 +26,7 @@
         <form action="{{ request()->url() }}"
               method="post"
               role="form"
-              id="contact-form"
+              id="apply-form"
               class="contactForm mt-4"
               enctype="multipart/form-data">
             @csrf
@@ -38,6 +38,9 @@
                        id="name"
                        value="{{old('name')}}"
                        placeholder="Your Name">
+                <span style="color:red"
+                      class="d-none"
+                      id="invalid-name">Invalid name format</span>
             </div>
             <div class="form-group">
                 <input type="email"

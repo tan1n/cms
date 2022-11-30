@@ -18,9 +18,30 @@
    class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 <script src="{{asset('dist/bundle.js')}}"></script>
 <script>
+    $(function(){
+    $('#apply-form').on('submit', function(event){
+        event.preventDefault();
+        const data = Object.fromEntries(new FormData($('form')[0]));
+        const hasNumber = /\d/.test(data.name);
+        if(hasNumber){
+            $("#invalid-name").removeClass('d-none')
+            return;
+        }
+        $("#invalid-name").addClass('d-none')
+        $('#apply-form')[0].submit();
+    });
+});
+</script>
+<script>
     function onSubmit(token) {
         const url = "{{route('contact')}}";
         const data = Object.fromEntries(new FormData($('form')[0]));
+        const hasNumber = /\d/.test(data.name);
+        if(hasNumber){
+            $("#invalid-name").removeClass('d-none')
+            return;
+        }
+        $("#invalid-name").addClass('d-none')
         $.ajax({
             method : "POST",
             data : data,

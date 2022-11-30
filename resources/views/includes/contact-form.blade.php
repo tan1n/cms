@@ -15,6 +15,9 @@
                    id="name"
                    placeholder="Your Name"
                    required />
+            <span style="color:red"
+                  class="d-none"
+                  id="invalid-name">Invalid name format</span>
         </div>
         <div class="form-group">
             <input type="email"
@@ -39,7 +42,9 @@
                       name="message"
                       rows="5"
                       required
-                      placeholder="Message"></textarea>
+                      max="200"
+                      maxlength="200"
+                      placeholder="Message (200 character)"></textarea>
         </div>
         <div class="text-center"><button type="button"
                     data-sitekey="{{setting('site.recaptcha_site_key')}}"
