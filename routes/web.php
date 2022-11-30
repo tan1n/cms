@@ -39,8 +39,9 @@ Route::post('contact', function () {
         'secret' => setting('site.recaptcha_secret_key'),
         'response' => request('g-recaptcha-response'),
     ]);
+
     if ($captcha->successful()) {
-        if ($captcha->json('success') && $captcha->json('score') > 0.4) {
+        if ($captcha->json('success')) {
             $data = request()->only(['name', 'email', 'subject', 'message']);
             app('App\Message')->create($data);
             return response()->json([], 200);

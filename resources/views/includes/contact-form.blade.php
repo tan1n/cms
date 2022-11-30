@@ -1,6 +1,8 @@
 <div class="form">
     <div id="sendmessage"
          style="display: none;color:darkgreen">Your message has been sent. Thank you!</div>
+    <div id="errormessage"
+         style="display: none;color:red">Please reload the page and try again!</div>
     <form action="{{ route('contact.submit') }}"
           method="post"
           role="form"
@@ -46,12 +48,9 @@
                       maxlength="200"
                       placeholder="Message (200 character)"></textarea>
         </div>
-        <div class="text-center"><button type="button"
-                    data-sitekey="{{setting('site.recaptcha_site_key')}}"
-                    data-callback='onSubmit'
-                    data-action='submit'
-                    class="g-recaptcha btn btn-primary">Send Message</button>
-        </div>
+        <div class="g-recaptcha"
+             data-sitekey="{{setting('site.recaptcha_site_key')}}"></div>
+        <button type="submit"
+                class="mt-3 btn btn-primary">Send Message</button>
     </form>
 </div>
-<script src="https://www.google.com/recaptcha/api.js"></script>
