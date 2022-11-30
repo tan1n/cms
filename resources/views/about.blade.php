@@ -32,13 +32,14 @@
                     <div class="flip-card-inner">
                         <div class="flip-card-front">
                             <div class="member">
-                                <div class="pic"><img src="{{app('filesystem')->url($member->image)}}" alt=""></div>
+                                <div class="pic"><img src="{{app('filesystem')->url($member->image)}}"
+                                         alt=""></div>
                                 <h4>{{$member->name}}</h4>
                                 <span>{{$member->position}}</span>
 
                             </div>
                         </div>
-                        <div class="flip-card-back p-4">
+                        <div class="flip-card-back p-2">
                             <p>{{$member->bio}}</p>
                             <div class="social">
                                 <a href="{{$member->linked_in_url}}"><i class="fa fa-linkedin"></i></a>
@@ -83,13 +84,15 @@
                         <p class="description">{{ setting('about-us.sub_1') }}</p>
                     </div>
 
-                    <div class="icon-box wow fadeInUp" data-wow-delay="0.2s">
+                    <div class="icon-box wow fadeInUp"
+                         data-wow-delay="0.2s">
                         <div class="icon"><i class="fa fa-photo"></i></div>
                         <h4 class="title"><a href="#">{{ setting('about-us.headline_2') }}</a></h4>
                         <p class="description">{{ setting('about-us.sub_2') }}</p>
                     </div>
 
-                    <div class="icon-box wow fadeInUp" data-wow-delay="0.4s">
+                    <div class="icon-box wow fadeInUp"
+                         data-wow-delay="0.4s">
                         <div class="icon"><i class="fa fa-bar-chart"></i></div>
                         <h4 class="title"><a href="#">{{setting('about-us.headline_3')}}</a></h4>
                         <p class="description">{{ setting('about-us.sub_3') }}</p>
@@ -97,7 +100,7 @@
                 </div>
                 @php $image = asset('storage/'.setting('about-us.image')); @endphp
                 <div class="col-lg-6 order-lg-2 order-1 wow fadeInRight"
-                    style="background: url({{str_replace("\\", "/", $image)}}) center top no-repeat;">
+                     style="background: url({{str_replace("\\", "/", $image)}}) center top no-repeat;">
                 </div>
             </div>
 
@@ -136,7 +139,8 @@
                 @foreach($teams as $member)
                 <div class="col-lg-3 col-md-6">
                     <div class="member">
-                        <div class="pic"><img src="{{app('filesystem')->url($member->image)}}" alt=""></div>
+                        <div class="pic"><img src="{{app('filesystem')->url($member->image)}}"
+                                 alt=""></div>
                         <h4>{{$member->name}}</h4>
                         <span>{{$member->position}}</span>
                         <div class="social">
