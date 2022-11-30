@@ -100,7 +100,11 @@ Route::post('jobs/{job}', function ($job) {
         $application->name = $data['name'];
         $application->email = $data['email'];
         $application->phone = $data['phone'];
-        $application->resume = str_replace('public/', '', request()->file('resume')->storePublicly('public/resumes'));
+        $filePath = str_replace('public/', '', request()->file('resume')->storePublicly('public/resumes'));
+        $application->resume = json_encode([[
+            'download_link' => $filePath,
+            'original_name' => request()->file('resume')->getClientOriginalName()
+        ]]);
         $application->job_id = $job->id;
         $application->save();
         session()->flash('message', 'Your application has been successfully accepted.');
