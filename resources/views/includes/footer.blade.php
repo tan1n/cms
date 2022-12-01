@@ -36,7 +36,6 @@
 <script>
     $('#contact-form').on('submit', function(event){
         event.preventDefault();
-        console.log('Hola');
         const url = "{{route('contact')}}";
         const data = Object.fromEntries(new FormData($('form')[0]));
         const hasNumber = /\d/.test(data.name);

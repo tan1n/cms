@@ -74,6 +74,8 @@ Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
 });
 
+Route::view('our-clients', 'our-clients')->name('our-clients');
+
 Route::post('jobs/{job}', function ($job) {
     $job = app('App\Job')->findOrFail($job);
     if (now()->gte($job->deadline)) {
