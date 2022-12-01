@@ -63,7 +63,7 @@
                         class="menu-has-children {{ in_array('contracts',request()->segments()) ? "menu-active" : "" }}">
                         <a href="javascript:void(0);">Government</a>
                         <ul>
-                            <li class="menu-has-children"><a href="{{ route('capabilities') }}">Capability Statement</a>
+                            <li><a href="{{ route('capabilities') }}">Capability Statement</a>
                             <li class="menu-has-children"><a href="javascript:void(0);">Contract vehicles</a>
                                 @php $contracts = app('App\Contract')->all()->sortBy('menu_position'); @endphp
                                 <ul>
@@ -74,7 +74,9 @@
                                     @endforeach
                                 </ul>
                             </li>
-                            <li class="menu-has-children"><a href="{{ route('our-clients') }}">Our Clients</a>
+                            <li><a href="{{ route('our-clients') }}">Our Clients</a>
+                            <li><a
+                                   href="{{ request()->url() === route('home') ? "#certifications" : route('home').'#certifications'  }}">Certifications</a>
                         </ul>
                     </li>
                     <li><a

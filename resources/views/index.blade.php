@@ -81,13 +81,14 @@
     <!--==========================
       Portfolio Section
     ============================-->
-    <section id="portfolio">
-        <div class="container wow fadeInUp">
-            <div class="section-header">
-                <h3 class="section-title">{{ setting('home.certification_header') }}</h3>
-                <p class="section-description">{{ setting('home.certification_text') }}</p>
-            </div>
-            {{-- <div class="row">
+    <div id="certifications">
+        <section id="portfolio">
+            <div class="container wow fadeInUp">
+                <div class="section-header">
+                    <h3 class="section-title">{{ setting('home.certification_header') }}</h3>
+                    <p class="section-description">{{ setting('home.certification_text') }}</p>
+                </div>
+                {{-- <div class="row">
                 <div class="col-lg-12">
                     <ul id="portfolio-flters">
                         <li data-filter=".filter-app, .filter-card, .filter-logo, .filter-web" class="filter-active">All
@@ -99,18 +100,19 @@
                     </ul>
                 </div>
             </div> --}}
-            @php $contracts = app('App\Certification')->all()->sortBy('serial_no'); @endphp
-            <div class="row ">
-                @foreach($contracts as $contract)
-                <div class="col-lg-4 col-md-6 p-4 d-flex align-items-center justify-content-center">
-                    <img src="{{ app('filesystem')->url($contract->image) }}"
-                         class="certificates_img"
-                         alt="">
+                @php $contracts = app('App\Certification')->all()->sortBy('serial_no'); @endphp
+                <div class="row ">
+                    @foreach($contracts as $contract)
+                    <div class="col-lg-4 col-md-6 p-4 d-flex align-items-center justify-content-center">
+                        <img src="{{ app('filesystem')->url($contract->image) }}"
+                             class="certificates_img"
+                             alt="">
+                    </div>
+                    @endforeach
                 </div>
-                @endforeach
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
     <!-- #portfolio -->
 
     <!--==========================
