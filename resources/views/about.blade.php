@@ -81,21 +81,21 @@
                     <div class="icon-box wow fadeInUp">
                         <div class="icon"><i class="{{ setting('about-us.icon_1') }}"></i></div>
                         <h4 class="title"><a href="javascript:void(0);">{{ setting('about-us.headline_1') }}</a></h4>
-                        <p class="description">{{ setting('about-us.sub_1') }}</p>
+                        <p class="description mt-3">{{ setting('about-us.sub_1') }}</p>
                     </div>
 
                     <div class="icon-box wow fadeInUp"
                          data-wow-delay="0.2s">
                         <div class="icon"><i class="{{ setting('about-us.icon_2') }}"></i></div>
                         <h4 class="title"><a href="javascript:void(0);">{{ setting('about-us.headline_2') }}</a></h4>
-                        <p class="description">{{ setting('about-us.sub_2') }}</p>
+                        <p class="description mt-3">{{ setting('about-us.sub_2') }}</p>
                     </div>
 
                     <div class="icon-box wow fadeInUp"
                          data-wow-delay="0.4s">
                         <div class="icon"><i class="{{ setting('about-us.icon_3') }}"></i></div>
                         <h4 class="title"><a href="javascript:void(0);">{{setting('about-us.headline_3')}}</a></h4>
-                        <p class="description">{{ setting('about-us.sub_3') }}</p>
+                        <p class="description mt-3">{{ setting('about-us.sub_3') }}</p>
                     </div>
                 </div>
                 @php $image = asset('storage/'.setting('about-us.image')); @endphp
