@@ -24,9 +24,9 @@
     Call To Action Section
     ============================-->
     <section id="call-to-action">
-        <div class="container wow fadeIn">
+        <div class="container-fluid wow fadeIn">
             <div class="row">
-                <div class="col-lg-9 mx-auto text-center text-lg-left">
+                <div class="col-lg-9 mx-auto text-center">
                     <h3 class="cta-title">{{ setting('home.why_us_header') }}</h3>
                     <p class="cta-text"> {{ setting('home.why_us_text') }}</p>
                 </div>
@@ -69,13 +69,12 @@
     <section id="call-to-action"
              style="background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
     url({{asset('img/career.jpg')}}) fixed center center;">
-        <div class="container wow fadeIn">
+        <div class="container-fluid wow fadeIn">
             <div class="row">
-                <div class="col-lg-9 mx-auto text-center text-lg-left">
+                <div class="col-lg-9 mx-auto text-center">
                     <p class="cta-text"> {{ setting('home.section_text') }}</p>
                 </div>
             </div>
-
         </div>
     </section>
     <!-- #call-to-action -->
