@@ -83,30 +83,19 @@
     ============================-->
     <div id="certifications">
         <section id="portfolio">
-            <div class="container wow fadeInUp">
+            <div class="container-fluid wow fadeInUp">
                 <div class="section-header">
                     <h3 class="section-title">{{ setting('home.certification_header') }}</h3>
                     <p class="section-description">{{ setting('home.certification_text') }}</p>
                 </div>
-                {{-- <div class="row">
-                <div class="col-lg-12">
-                    <ul id="portfolio-flters">
-                        <li data-filter=".filter-app, .filter-card, .filter-logo, .filter-web" class="filter-active">All
-                        </li>
-                        <li data-filter=".filter-app">App</li>
-                        <li data-filter=".filter-card">Card</li>
-                        <li data-filter=".filter-logo">Logo</li>
-                        <li data-filter=".filter-web">Web</li>
-                    </ul>
-                </div>
-            </div> --}}
-                @php $contracts = app('App\Certification')->all()->sortBy('serial_no'); @endphp
+                @php $certifications = app('App\Certification')->all()->sortBy('serial_no'); @endphp
                 <div class="row ">
-                    @foreach($contracts as $contract)
-                    <div class="col-lg-4 col-md-6 p-4 d-flex align-items-center justify-content-center">
-                        <img src="{{ app('filesystem')->url($contract->image) }}"
+                    @foreach($certifications as $certificates)
+                    <div class="col-lg-4 col-md-6 p-4 d-flex align-items-center justify-content-center flex-column">
+                        <img src="{{ app('filesystem')->url($certificates->image) }}"
                              class="certificates_img"
                              alt="">
+                        <h6 class="mt-3">{{ $certificates->description }}</h6>
                     </div>
                     @endforeach
                 </div>
@@ -173,7 +162,6 @@
                            class="linkedin"><i class="fa fa-linkedin"></i></a>
                         @endif
                     </div>
-
                 </div>
 
                 <div class="col-lg-5 col-md-8">
